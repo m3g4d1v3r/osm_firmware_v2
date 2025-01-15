@@ -6,7 +6,8 @@
 
 void measurements_setup_default(measurements_def_t* def, char* name, uint8_t interval, uint8_t samplecount, measurements_def_type_t type)
 {
-    strncpy(def->name, name, MEASURE_NAME_NULLED_LEN);
+    memcpy(def->name, name, MEASURE_NAME_NULLED_LEN);
+    def->name[MEASURE_NAME_NULLED_LEN-1] = 0;
     def->interval    = interval;
     def->samplecount = samplecount;
     def->type        = type;
