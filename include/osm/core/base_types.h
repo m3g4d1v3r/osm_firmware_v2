@@ -307,3 +307,11 @@ struct cmd_link_t
     bool hidden;
     struct cmd_link_t * next;
 };
+
+
+typedef enum
+{
+    IO_PUPD_NONE    = 0,
+    IO_PUPD_UP      = 1,
+    IO_PUPD_DOWN    = 2,
+} io_pupd_t;

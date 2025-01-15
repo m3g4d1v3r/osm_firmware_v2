@@ -11,14 +11,6 @@
 #define IOS_MEASUREMENT_NAME_PRE            "IO"
 
 
-typedef enum
-{
-    IO_PUPD_NONE    = 0,
-    IO_PUPD_UP      = 1,
-    IO_PUPD_DOWN    = 2,
-} io_pupd_t;
-
-
 extern const port_n_pins_t ios_pins[IOS_COUNT];
 
 
