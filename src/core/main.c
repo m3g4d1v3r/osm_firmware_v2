@@ -11,9 +11,6 @@
 
 #include <osm/core/cmd.h>
 #include <osm/core/uarts.h>
-#include <osm/core/adcs.h>
-#include <osm/core/io.h>
-#include <osm/core/i2c.h>
 #include <osm/core/persist_config.h>
 #include <osm/protocols/protocol.h>
 #include <osm/core/measurements.h>
@@ -27,8 +24,6 @@ int osm_main(void)
 {
     platform_init();
     platform_blink_led_init();
-
-    i2cs_init();
 
     uarts_setup();
     uart_rings_init();
