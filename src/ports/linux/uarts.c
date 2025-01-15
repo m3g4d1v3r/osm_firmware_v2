@@ -62,14 +62,6 @@ void uart_enable(unsigned uart, bool enable)
 }
 
 
-bool uart_is_enabled(unsigned uart)
-{
-    if (uart >= UART_CHANNELS_COUNT)
-        return false;
-    return uart_channels[uart].enabled;
-}
-
-
 void uart_resetup(unsigned uart, unsigned speed, uint8_t databits, osm_uart_parity_t parity, osm_uart_stop_bits_t stop, cmd_ctx_t * ctx)
 {
     if (uart >= UART_CHANNELS_COUNT)
