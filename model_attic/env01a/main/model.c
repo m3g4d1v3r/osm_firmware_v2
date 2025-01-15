@@ -98,6 +98,7 @@ unsigned model_measurements_add_defaults(measurements_def_t * measurements_arr)
     unsigned pos = 0;
     measurements_setup_default(&measurements_arr[pos++], MEASUREMENTS_FW_VERSION,           4,  1,  FW_VERSION      );
     measurements_setup_default(&measurements_arr[pos++], MEASUREMENTS_CONFIG_REVISION,      4,  1,  CONFIG_REVISION );
+    ios_measurements_init();
     return pos;
 }
 

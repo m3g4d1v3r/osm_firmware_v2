@@ -266,6 +266,7 @@ unsigned model_measurements_add_defaults(measurements_def_t * measurements_arr)
     measurements_setup_default(&measurements_arr[pos++], MEASUREMENTS_EXAMPLE_RS232_NAME,           0,  1, EXAMPLE_RS232           );
     measurements_setup_default(&measurements_arr[pos++], MEASUREMENTS_TMP4718_LOCAL_NAME,   1,  1,  TMP4718         );
     measurements_setup_default(&measurements_arr[pos++], MEASUREMENTS_TMP4718_REMOTE_NAME,  1,  1,  TMP4718         );
+    ios_measurements_init();
     return pos;
 }
 
