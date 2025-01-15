@@ -60,8 +60,12 @@
 #define CONCAT2(a, b) a##b
 #define CONCAT(a, b) CONCAT2(a, b)
 
+#ifndef MIN
 #define MIN(a,b) (((a)<(b))?(a):(b))
+#endif // MIN
+#ifndef MAX
 #define MAX(a,b) (((a)>(b))?(a):(b))
+#endif // MAX
 
 #ifndef ARRAY_SIZE
 #define ARRAY_SIZE(_a) (sizeof(_a)/sizeof(_a[0]))
