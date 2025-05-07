@@ -24,7 +24,10 @@ bool persist_config_update(const persist_storage_t* from_config, persist_storage
     {
         return false;
     }
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Waddress-of-packed-member"
     return model_config_update((const void*)&from_config->model_config, &to_config->model_config, model_version);
+#pragma GCC diagnostic pop
 }
 
 
