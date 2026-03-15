@@ -70,6 +70,7 @@ include $(OSM_DIR)/src/ports/stm/stm.mk
 include $(OSM_DIR)/src/ports/linux/linux.mk
 include $(OSM_DIR)/src/ports/esp32/esp32.mk
 include $(OSM_DIR)/src/ports/rp2350/rp2350.mk
+include $(OSM_DIR)/src/ports/rp2040/rp2040.mk
 
 define OSM_PROGRAM_template
   include $(1)
