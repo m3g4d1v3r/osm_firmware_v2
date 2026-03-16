@@ -15,6 +15,7 @@
 #include <osm/protocols/protocol.h>
 #include <osm/core/measurements.h>
 
+#include "osm/core/sleep.h"
 
 #define DISCONNECTED_FLASHING_TIME_SEC      50
 #define NORMAL_FLASHING_TIME_SEC            500
@@ -24,6 +25,11 @@ int osm_main(void)
 {
     osm_platform_init();
     osm_platform_blink_led_init();
+
+    while (1) {
+        osm_platform_blink_led_toggle();
+        osm_sleep_for_ms(1000);
+    }
 
     osm_uarts_setup();
     osm_uart_rings_init();
