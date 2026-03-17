@@ -3,6 +3,7 @@
 #include "hardware/clocks.h"
 #include "hardware/gpio.h"
 #include "hardware/watchdog.h"
+#include "pico/status_led.h"
 
 
 #include "pinmap.h"
@@ -27,11 +28,7 @@ static void _wait_units(unsigned count)
 
 static void _led_set(bool on)
 {
-#ifdef LED_PIN
-    gpio_put(LED_PIN, on);
-#elif defined(CYW43_WL_GPIO_LED_PIN)
-    cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, on);
-#endif
+    status_led_init();
 }
 
 

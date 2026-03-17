@@ -8,14 +8,12 @@
 #include "hardware/flash.h"
 #include "hardware/divider.h"
 
-#ifdef CYW43_WL_GPIO_LED_PIN
-#include "pico/cyw43_arch.h"
-#endif
-
 #include <osm/core/config.h>
 #include "pinmap.h"
 #include <osm/core/persist_config_header.h>
 #include "sos.h"
+
+#include "pico/status_led.h"
 
 #if PICO_RP2040
 #define VTOR_OFFSET M0PLUS_VTOR_OFFSET
@@ -84,27 +82,13 @@ static void _run_application(void)
 
 static void _led_setup(void)
 {
-#ifdef LED_PIN
-    gpio_init(LED_PIN);
-    gpio_set_dir(LED_PIN, true);
-    gpio_put(LED_PIN, false);
-#elif defined(CYW43_WL_GPIO_LED_PIN)
-    if (cyw43_arch_init()) {
-        return;
-    }
-#else
-#pragma message("WARNING: No LED pin defined")
-#endif // LED_PIN / CYW43_WL_GPIO_LED_PIN
+    status_led_init();
 }
 
 
 static void _led_unsetup(void)
 {
-#ifdef LED_PIN
-    gpio_deinit(LED_PIN);
-#elif defined(CYW43_WL_GPIO_LED_PIN)
-    cyw43_arch_deinit();
-#endif // LED_PIN / CYW43_WL_GPIO_LED_PIN
+    status_led_deinit();
 }
 
 

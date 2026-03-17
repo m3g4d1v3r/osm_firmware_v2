@@ -1,8 +1,8 @@
 #include <string.h>
 
-#include "pico/cyw43_arch.h"
 #include "pico/unique_id.h"
 #include "pico/flash.h"
+#include "pico/status_led.h"
 #include "pico/sync.h"
 #include "hardware/gpio.h"
 #include "hardware/watchdog.h"
@@ -10,10 +10,6 @@
 #include "hardware/timer.h"
 #include "hardware/clocks.h"
 #include "hardware/flash.h"
-
-#ifdef CYW43_WL_GPIO_LED_PIN
-#include "pico/cyw43_arch.h"
-#endif
 
 #include <osm/core/platform.h>
 #include <osm/core/log.h>
@@ -45,28 +41,14 @@ uint32_t osm_platform_get_hw_id(void)
 
 void osm_platform_blink_led_init(void)
 {
-#ifdef LED_PIN
-    gpio_init(LED_PIN);
-    gpio_set_dir(LED_PIN, true);
-    gpio_put(LED_PIN, true);
-#elif defined(CYW43_WL_GPIO_LED_PIN)
-    /* assume cyw43_arch already inited */
-    cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, true);
-#else
-#pragma message("WARNING: No heartbeat LED defined")
-#endif
+    status_led_init();
 }
 
 
 void osm_platform_blink_led_toggle(void)
 {
-#ifdef LED_PIN
-    bool out = gpio_get_out_level(LED_PIN);
-    gpio_put(LED_PIN, !out);
-#elif defined(CYW43_WL_GPIO_LED_PIN)
-    bool out = cyw43_arch_gpio_get(CYW43_WL_GPIO_LED_PIN);
-    cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, !out);
-#endif
+    bool out = status_led_get_state();
+    status_led_set_state(!out);
 }
 
 
@@ -84,9 +66,6 @@ void osm_platform_watchdog_init(uint32_t ms)
 
 void osm_platform_init(void)
 {
-#ifdef CYW43_WL_GPIO_LED_PIN
-    cyw43_arch_init();
-#endif
     set_sys_clock_khz(150000, true);
 }
 

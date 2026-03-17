@@ -37,7 +37,7 @@ pico_generate_pio_header(application
 target_sources(application PRIVATE ${OSM_SRCS})
 
 target_link_libraries(application
-    pico_cyw43_arch_none
+    pico_status_led
     pico_stdlib
     pico_unique_id
     pico_time
@@ -67,7 +67,7 @@ add_executable(bootloader
 )
 
 target_link_libraries(bootloader
-    pico_cyw43_arch_none
+    pico_status_led
     pico_stdlib
     hardware_gpio
     hardware_uart
