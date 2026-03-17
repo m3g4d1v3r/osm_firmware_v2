@@ -29,7 +29,7 @@
 
 #define FW_MAX_SIZE                 (1028 * 1024)
 #define FW_SECTOR                   (PERSIST_CONFIG_SECTOR + 2 * FLASH_SECTOR_SIZE)
-#define FW_ADDR                     _SECTOR_TO_ADDR(FW_SECTOR)
+#define FW_ADDR                     (_SECTOR_TO_ADDR(FW_SECTOR) + 256) // 256-byte offset: skips application's boot2
 #define NEW_FW_SECTOR               (FW_SECTOR + FW_MAX_SIZE)
 #define NEW_FW_ADDR                 _SECTOR_TO_ADDR(NEW_FW_SECTOR)
 #define NEW_FW_PAGE                 _SECTOR_TO_PAGE(NEW_FW_SECTOR)
