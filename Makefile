@@ -1,6 +1,6 @@
 OSM_DIR ?= .
 OSM_BUILD_DIR ?= $(OSM_DIR)/build
-OSM_MODEL_DIR ?= $(OSM_DIR)/model
+OSM_MODEL_DIR ?= $(OSM_DIR)/model_attic
 OSM_LIB_DIR ?= $(OSM_DIR)/libs
 
 OSM_GIT_COMMITS := $(shell git rev-list --count HEAD)
